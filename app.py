@@ -5,9 +5,6 @@ import seaborn as sns
 import streamlit as st
 from pathlib import Path
 
-DATA_PATH = Path("docs/01-task1/Delinquency_prediction_dataset.xlsx")
-
-
 @st.cache_data
 def load_data(src) -> pd.DataFrame:
     """Load data from a file path or uploaded file.
@@ -52,26 +49,25 @@ def main() -> None:
     The analysis focuses on data quality, target imbalance, and key risk indicators.
     """)
 
-    # Sidebar for data source
-    with st.sidebar:
-        st.header("📊 Data Source")
-        uploaded_file = st.file_uploader(
-            "Upload dataset (Excel or CSV)",
-            type=["xlsx", "xls", "xlsm", "csv"],
-            help=(
-                "If you don't upload a file, the app will try to use the bundled "
-                f"file at `{DATA_PATH}`."
-            ),
-        )
-        show_raw = st.checkbox("Show raw data preview", value=False)
+    st.header("📊 Data Source")
+    uploaded_file = st.file_uploader(
+        "Upload dataset (Excel or CSV)",
+        type=["xlsx", "xls", "xlsm", "csv"],
+        help=(
+            "Upload a file to analyze"
+        ),
+    )
+    show_raw = st.checkbox("Show raw data preview", value=False)
 
-    data_src = uploaded_file if uploaded_file is not None else DATA_PATH
+    if uploaded_file is None:
+        st.info("👆 Please upload a dataset to begin the analysis")
+        return
 
     try:
-        df = load_data(data_src)
+        df = load_data(uploaded_file)
     except FileNotFoundError:
         st.error(
-            f"Could not find data file at `{DATA_PATH}`. "
+            "Could not find data file. "
             "Make sure you are running this app from the project root, or upload "
             "a dataset using the sidebar."
         )
@@ -216,21 +212,34 @@ def main() -> None:
     
     with col2:
         st.subheader("Target Distribution Chart")
-        fig_target, ax_target = plt.subplots(figsize=(6, 4))
-        bars = ax_target.bar(target_counts.index.astype(str), target_counts.values, 
-                             color=['#2ecc71', '#e74c3c'])
-        ax_target.set_xlabel(target_col)
-        ax_target.set_ylabel("Count")
-        ax_target.set_title(f"Distribution of {target_col}")
+        fig_target, ax_target = plt.subplots(figsize=(7, 5))
         
-        # Add percentage labels on bars
-        for bar, count, pct in zip(bars, target_counts.values, target_pct.values):
-            height = bar.get_height()
-            ax_target.text(bar.get_x() + bar.get_width()/2., height,
-                          f'{count}\n({pct:.1f}%)',
-                          ha='center', va='bottom')
+        # Emphasize minority class with explode effect
+        explode = [0.05 if i == target_counts.values.argmin() else 0 for i in range(len(target_counts))]
+        colors = ['#2ecc71', '#e74c3c'] if len(target_counts) == 2 else sns.color_palette("Set2", len(target_counts))
+        
+        wedges, texts, autotexts = ax_target.pie(
+            target_counts.values, 
+            labels=[f'{label}\n({count:,})' for label, count in zip(target_counts.index.astype(str), target_counts.values)],
+            autopct='%1.1f%%',
+            startangle=140,
+            colors=colors,
+            explode=explode,
+            shadow=True,
+            textprops={'fontsize': 10, 'weight': 'bold'}
+        )
+        
+        # Enhance percentage text styling
+        for autotext in autotexts:
+            autotext.set_color('white')
+            autotext.set_fontsize(11)
+            autotext.set_weight('bold')
+        
+        ax_target.axis('equal')
+        ax_target.set_title(f"Distribution of {target_col}", fontsize=12, fontweight='bold', pad=20)
         st.pyplot(fig_target)
-
+                
+        
     # ===== SECTION 4: CORRELATION ANALYSIS =====
     st.header("4️⃣ Correlation Analysis")
     

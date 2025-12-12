@@ -15,7 +15,7 @@
 
 ## Let's get started
 
-Your team has been working closely with Geldium to enhance their risk assessment strategy. Charithra, your senior manager, has assigned you the first stage of the project: conducting an exploratory data analysis (EDA) to assess dataset completeness, identify patterns, and flag potential gaps that could impact delinquency predictions.
+Your team has been working closely with Geldium to enhance their risk assessment strategy. Charithra, your senior manager, has assigned you the first stage of the project: **conducting an exploratory data analysis (EDA)** to assess dataset completeness, identify patterns, and flag potential gaps that could impact delinquency predictions.
 
 In a recent discussion with Geldium’s Head of Collections, they emphasized the need for a more structured, data-driven approach to identifying at-risk customers. Their current methods rely on historical trends and broad segmentation models, which lack the precision required for proactive intervention strategies. Geldium’s leadership is interested in leveraging AI-driven insights, but before any predictive models can be deployed, we need to ensure that the foundational data is reliable and usable.
 
@@ -65,10 +65,10 @@ Before you start working on your project, it's important to build a solid founda
 ### What is exploratory data analysis?
 Exploratory data analysis (EDA) is the first step in understanding a dataset before applying any predictive models or making business decisions. EDA helps analysts uncover patterns, trends, inconsistencies, and missing values to ensure data quality and reliability. In the context of financial services, EDA plays a crucial role in risk assessment, allowing teams to identify key factors contributing to credit card delinquency and build stronger prediction models. Here is why EDA matters in predicting delinquency:
 
-- Ensures data integrity – Identifies missing values, duplicates, and inconsistencies before analysis.
-- Highlights patterns and anomalies – Helps detect trends in customer behavior, such as spending patterns before delinquency.
-- Prevents biased models – Reduces the risk of unfair treatment by ensuring diverse data representation.
-- Supports better decision-making – Provides Geldium’s Collections and Risk teams with clear insights for proactive customer engagement.
+- Ensures data integrity: Identifies missing values, duplicates, and inconsistencies before analysis.
+- Highlights patterns and anomalies: Helps detect trends in customer behavior, such as spending patterns before delinquency.
+- Prevents biased models: Reduces the risk of unfair treatment by ensuring diverse data representation.
+- Supports better decision-making: Provides Geldium’s Collections and Risk teams with clear insights for proactive customer engagement.
 
 Without a thorough EDA process, predictive models can be built on flawed data, leading to inaccurate insights, poor risk management, and potentially unfair decision-making. Later in this task, you will examine a dataset related to delinquency risk, identify missing or inconsistent data points, and generate initial insights using GenAI tools.
 
@@ -77,17 +77,18 @@ Without a thorough EDA process, predictive models can be built on flawed data, l
 ## Key steps in conducting EDA
 EDA consists of four main steps, which can be enhanced with GenAI tools:
 
-### 1️⃣ Understanding the dataset
+### 1 - Understanding the dataset
 Before jumping into analysis, take time to familiarize yourself with the dataset. Ask yourself:
 
 - What are the key variables (e.g., payment history, income levels, credit utilization)?
 - Are there categorical or numerical data points?
 - Are there missing or inconsistent values?
-Using GenAI: You can use AI-powered summarization tools to quickly scan a dataset and generate an overview. Tools such as ChatGPT or Google Gemini can help interpret column headers, suggest relevant features, and summarize key statistics.
+
+**Using GenAI:** You can use AI-powered summarization tools to quickly scan a dataset and generate an overview. Tools such as ChatGPT or Google Gemini can help interpret column headers, suggest relevant features, and summarize key statistics.
 
 > - 💡 Example prompt: "Analyze this dataset and provide a summary of key columns, including common patterns and missing values."
 
-### 2️⃣ Identifying missing values and outliers
+### 2 - Identifying missing values and outliers
 Incomplete data can lead to poor predictions. Missing values in credit risk datasets may result from human error, system failures, or unreported financial activity.
 
 Here are some common techniques for handling missing data:
@@ -103,7 +104,7 @@ Using GenAI (for exploration, not direct imputation):
 
 > - 💡 Example prompt: "Identify missing values in this dataset and recommend the best imputation strategy based on industry best practices."
 
-### 3️⃣ Understanding relationships between variables
+### 3 - Understanding relationships between variables
 EDA also involves examining how different features interact. For example:
 
 - Do customers with high credit utilization rates have a higher risk of delinquency?
@@ -114,7 +115,7 @@ Using GenAI:
 - Instead of manually coding formulas, GenAI can summarize variable relationships in natural language.
 > - 💡 Example prompt: "Analyze the correlation between customer income and delinquency risk, summarizing key findings in simple terms."
 
-### 4️⃣ Detecting patterns and risk factors
+### 4 - Detecting patterns and risk factors
 The final step in EDA is to identify patterns that could impact delinquency prediction. These might include:
 
 - Customers who miss one payment often miss multiple.
