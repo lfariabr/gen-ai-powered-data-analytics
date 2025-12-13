@@ -1,4 +1,4 @@
-# Task 02 overview
+# Task 03 overview
 
 After generating an initial predictive model framework in Task 2, your team performed additional refinement and validation to ensure its alignment with Geldium’s risk assessment needs. Now, your next step is to translate these structured insights into a clear, actionable report for Geldium’s Head of Collections.
 
