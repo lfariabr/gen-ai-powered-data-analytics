@@ -1,6 +1,14 @@
 # gen-ai-powered-data-analytics
 
+🎉 **SIMULATION COMPLETED!** Successfully finished Tata's GenAI Powered Data Analytics simulation on Forage.
+
 GenAI-powered delinquency risk toolkit built for the Tata Data Visualisation Forage challenge. The repository combines guided project notes with a Streamlit app that explores credit card customer data and outlines a modeling plan for reducing delinquency at Geldium Finance.
+
+## 🏆 Accomplishments
+- ✅ Conducted exploratory data analysis (EDA) using GenAI tools to assess data quality, identify risk indicators, and structure insights for predictive modeling
+- ✅ Proposed and justified an initial no-code predictive modeling framework to assess customer delinquency risk, leveraging GenAI for structured model logic and evaluation criteria
+- ✅ Designed an AI-driven collections strategy leveraging agentic AI and automation, incorporating ethical AI principles, regulatory compliance, and scalable implementation frameworks
+- 🔗 [View the simulation](https://www.theforage.com/simulations/tata/data-analytics-t3zr)
 
 ## Overview
 - Role: AI transformation consultant using analytics and GenAI to support Geldium’s collections team.
